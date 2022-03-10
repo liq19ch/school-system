@@ -17,9 +17,8 @@ public class StudentDAOImpl implements StudentDAO {
 
 	
 	@Autowired
-	private SessionFactory sessionFactory;	
+	private SessionFactory sessionFactory;
 	
-	@Transactional
 	@Override
 	public List<Student> getStudents() {
 		Session currentSession =  sessionFactory.getCurrentSession();
