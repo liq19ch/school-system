@@ -6,6 +6,6 @@
 </head>
 
 <body>
-	<a href="student/list">Student list</a>
+	<a href="${pageContext.request.contextPath}/student/list">Student list</a>
 </body>
 </html>

@@ -6,8 +6,9 @@
 	<title>List Students</title>
 	
 	<link type="text/css" 
-		rel="stylesheet" 
-		href="${pageContext.request.contextPath}/resources/css/style.css" />
+		  rel="stylesheet" 
+		  href="${pageContext.request.contextPath}/resources/css/style.css" />
+
 </head>
 
 <body>
@@ -18,6 +19,11 @@
 	</div>
 	<div id="container">
 		<div id="content">
+		
+			<input type="button" value="Add"
+					onclick="window.location.href='addForm'; return false;"
+					class="add-button" />
+		
 		
 			<table>
 				<tr>
