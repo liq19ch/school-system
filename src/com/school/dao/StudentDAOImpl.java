@@ -49,4 +49,25 @@ public class StudentDAOImpl implements StudentDAO {
 		query.executeUpdate();
 	}
 
+	@Override
+	public List<Student> searchStudents(String searchName) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+        Query query = null;
+   
+        if (searchName != null && searchName.trim().length() > 0) {
+        	query = currentSession.createQuery("from Student where lower(firstName) like :theName or lower(lastName) like :theName", Student.class);
+        	query.setParameter("theName", "%" + searchName.toLowerCase() + "%");
+        }
+        else {
+        	query =currentSession.createQuery("from Student", Student.class);            
+        }
+        
+  
+        List<Student> students = query.getResultList();
+                
+
+        return students;
+	}
+
 }
