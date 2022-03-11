@@ -48,4 +48,11 @@ public class StudentServiceImpl implements StudentService{
 		
 	}
 
+
+	@Override
+	@Transactional
+	public List<Student> searchStudents(String searchName) {
+		return studentDAO.searchStudents(searchName);
+	}
+
 }
