@@ -22,9 +22,31 @@ public class StudentDAOImpl implements StudentDAO {
 	@Override
 	public List<Student> getStudents() {
 		Session currentSession =  sessionFactory.getCurrentSession();
-		Query<Student> query = currentSession.createQuery("from Student", Student.class);
+		Query<Student> query = currentSession.createQuery("from Student order by lastName", Student.class);
 		List<Student>students = query.getResultList();
 		return students;
+	}
+
+	@Override
+	public void saveStudent(Student student) {
+		Session currentSession =  sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(student);
+		
+	}
+
+	@Override
+	public Student getStudent(int id) {
+		Session currentSession =  sessionFactory.getCurrentSession();
+		Student student = currentSession.get(Student.class, id);
+		return student;
+	}
+
+	@Override
+	public void deleteStudent(int id) {
+		Session currentSession =  sessionFactory.getCurrentSession();
+		Query query = currentSession.createQuery("delete from Student where id=:studentId");
+		query.setParameter("studentId", id);
+		query.executeUpdate();
 	}
 
 }
