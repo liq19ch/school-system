@@ -54,4 +54,13 @@ public class StudentController {
 		return "redirect:/student/list";
 	}
 	
+	@GetMapping("/search")
+	 public String search(@RequestParam("searchName") String searchName,
+             Model model) {
+		
+		List<Student> students = studentService.searchStudents(searchName);
+		model.addAttribute("students", students);
+		return "list-students";        
+}
+	
 }
