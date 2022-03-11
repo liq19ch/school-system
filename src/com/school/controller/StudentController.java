@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.school.entity.Student;
 import com.school.service.StudentService;
@@ -39,4 +40,18 @@ public class StudentController {
 		studentService.saveStudent(student);
 		return "redirect:/student/list";
 	}
+	
+	@GetMapping("/updateForm")
+	public String updateForm(@RequestParam("studentId") int id, Model model) {
+		Student student = studentService.getStudent(id);
+		model.addAttribute("student", student);
+		return "student-form";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteStudent(@RequestParam("studentId") int id) {
+		studentService.deleteStudent(id);
+		return "redirect:/student/list";
+	}
+	
 }
