@@ -33,4 +33,19 @@ public class StudentServiceImpl implements StudentService{
 		studentDAO.saveStudent(student);
 	}
 
+
+	@Override
+	@Transactional
+	public Student getStudent(int id) {
+		return studentDAO.getStudent(id);
+	}
+
+
+	@Override
+	@Transactional
+	public void deleteStudent(int id) {
+		studentDAO.deleteStudent(id);
+		
+	}
+
 }
