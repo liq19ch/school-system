@@ -5,30 +5,50 @@
 <html>
 
 <head>
-	<title>Home</title>
+<title>Home</title>
 </head>
 
 
 <body>
-	<a href="student/list">Student list</a>
-	
+
+
 	<hr>
-		User: <security:authentication property = "principal.username" />
-		<br>
-		<br>
-		Role: <security:authentication property = "principal.authorities" />
+	User:
+	<security:authentication property="principal.username" />
+	<br>
+	<br>
+	Role:
+	<security:authentication property="principal.authorities" />
 	<hr>
-	
-		<a href ="${pageContext.request.contextPath}/courses"> Courses List </a>
-	
+	<p>
+		<a href="${pageContext.request.contextPath}/students/info"> Personal Info </a>
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/students/courses"> Courses List </a>
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/teachers/courses-list"> Courses List </a>
+	</p>
+
+	<p>
+		<a href="${pageContext.request.contextPath}/teachers/student-list">Student list</a>
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/systems/list">Student list</a>
+	</p>
+	<p>
+
+		<a href="${pageContext.request.contextPath}/systems"> System </a>
+	</p>
+
 	<hr>
-	
+
 	<br>
 	<br>
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 		<input type="submit" value="Logout" />
-	
+
 	</form:form>
-	
+
 </body>
 </html>

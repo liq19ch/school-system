@@ -44,10 +44,10 @@
 				
 				<c:forEach var="tempStudent" items="${students}">
 				
-				<c:url var="updateLink" value="/student/updateForm">
+				<c:url var="updateLink" value="/systems/updateForm">
 					<c:param name="studentId" value="${tempStudent.id}" />
 				</c:url>
-				<c:url var="deleteLink" value="/student/delete">
+				<c:url var="deleteLink" value="/systems/delete">
 					<c:param name="studentId" value="${tempStudent.id}" />
 				</c:url>
 				
