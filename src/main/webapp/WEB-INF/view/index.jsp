@@ -20,26 +20,34 @@
 	Role:
 	<security:authentication property="principal.authorities" />
 	<hr>
-	<p>
-		<a href="${pageContext.request.contextPath}/students/info"> Personal Info </a>
-	</p>
-	<p>
-		<a href="${pageContext.request.contextPath}/students/courses"> Courses List </a>
-	</p>
-	<p>
-		<a href="${pageContext.request.contextPath}/teachers/courses-list"> Courses List </a>
-	</p>
+	
+	<security:authorize access="hasRole('STUDENT')">
+		<p>
+			<a href="${pageContext.request.contextPath}/students/info"> Personal Info </a>
+		</p>
+		<p>
+			<a href="${pageContext.request.contextPath}/students/courses"> Courses List </a>
+		</p>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('TEACHER')">
+		<p>
+			<a href="${pageContext.request.contextPath}/teachers/courses-list"> Courses List </a>
+		</p>
+		<p>
+			<a href="${pageContext.request.contextPath}/teachers/student-list">Student list</a>
+		</p>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<p>
+			<a href="${pageContext.request.contextPath}/systems/list">Student list</a>
+		</p>
+		<p>
 
-	<p>
-		<a href="${pageContext.request.contextPath}/teachers/student-list">Student list</a>
-	</p>
-	<p>
-		<a href="${pageContext.request.contextPath}/systems/list">Student list</a>
-	</p>
-	<p>
-
-		<a href="${pageContext.request.contextPath}/systems"> System </a>
-	</p>
+			<a href="${pageContext.request.contextPath}/systems"> System </a>
+		</p>
+	</security:authorize>
 
 	<hr>
 
