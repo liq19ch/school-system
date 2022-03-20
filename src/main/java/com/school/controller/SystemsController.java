@@ -21,10 +21,7 @@ public class SystemsController {
 	@Autowired
 	private StudentService studentService; 
 	
-	@GetMapping("/")
-	public String system() {
-		return "systems";
-	}
+
 	
 	@GetMapping("/list")
 	public String listStudents(Model model) {
