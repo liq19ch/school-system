@@ -18,18 +18,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		UserBuilder usersBuilder = User.withDefaultPasswordEncoder();
 		auth.inMemoryAuthentication().withUser(usersBuilder.username("student").password("test123").roles("STUDENT"))
-		.withUser(usersBuilder.username("teacher").password("test123").roles("TEACHER"))
-		.withUser(usersBuilder.username("admin").password("test123").roles("ADMIN"));
+				.withUser(usersBuilder.username("teacher").password("test123").roles("TEACHER"))
+				.withUser(usersBuilder.username("admin").password("test123").roles("ADMIN"));
 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and()
-		.formLogin().loginPage("/loginPage").loginProcessingUrl("/authenticateTheUser").permitAll()
-		.and().logout().permitAll();
+
+		http.authorizeRequests().antMatchers("/").hasAnyRole("TEACHER", "STUDENT", "ADMIN")
+		.antMatchers("/students/**").hasAnyRole("STUDENT")
+		.antMatchers("/systems/**").hasRole("ADMIN")
+		.antMatchers("/teachers/**").hasAnyRole("TEACHER")
+		.and().formLogin().loginPage("/loginPage").loginProcessingUrl("/authenticateTheUser")
+				.permitAll().and().logout().permitAll()
+				.and().exceptionHandling().accessDeniedPage("/accessDenied");
 	}
-	
-	
 
 }
