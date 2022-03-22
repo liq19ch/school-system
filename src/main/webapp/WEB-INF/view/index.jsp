@@ -6,13 +6,14 @@
 
 <head>
 <title>Home</title>
+	<link type="text/css" 
+		  rel="stylesheet" 
+		  href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 
 
 <body>
 
-
-	<hr>
 	User:
 	<security:authentication property="principal.username" />
 	<br>
@@ -27,6 +28,9 @@
 		</p>
 		<p>
 			<a href="${pageContext.request.contextPath}/students/courses"> Courses List </a>
+		</p>
+		<p>
+			<a href="${pageContext.request.contextPath}/students/my-courses"> My Courses </a>
 		</p>
 	</security:authorize>
 	
@@ -54,7 +58,7 @@
 	<br>
 	<br>
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-		<input type="submit" value="Logout" />
+		<input type="submit" value="Logout" class="add-button"/>
 
 	</form:form>
 
